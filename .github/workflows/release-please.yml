@@ -1,0 +1,65 @@
+name: Release Please
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: release-please-main
+  cancel-in-progress: false
+jobs:
+  quality:
+    uses: ./.github/workflows/quality.yml
+  release:
+    if: github.ref == 'refs/heads/main'
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - uses: pnpm/action-setup@d9184bf108216479bc5a137cc391f4d7b14c870b # v6.1.0
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        id: release
+        with:
+          token: ${{ github.token }}
+          config-file: .github/release-please-config.json
+          manifest-file: .github/.release-please-manifest.json
+      - name: Dispatch checks for bot-created release PRs
+        if: steps.release.outputs.prs_created == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh pr list --label 'autorelease: pending' --json headRefName --jq '.[].headRefName' |
+          while IFS= read -r branch; do
+            gh workflow run quality.yml --ref "$branch"
+          done
+      - name: Package the exact release commit
+        if: steps.release.outputs.release_created == 'true'
+        env:
+          RELEASE_TAG: ${{ steps.release.outputs.tag_name }}
+        run: |
+          git fetch origin "refs/tags/$RELEASE_TAG:refs/tags/$RELEASE_TAG"
+          git checkout --detach "$RELEASE_TAG"
+          pnpm install --frozen-lockfile
+          pnpm release:build
+      - name: Publish immutable release assets
+        if: steps.release.outputs.release_created == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag_name }}
+        run: gh release upload "$RELEASE_TAG" dist/*.tar.gz dist/SHA256SUMS dist/release.json

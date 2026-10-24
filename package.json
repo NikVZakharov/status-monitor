@@ -1,0 +1,17 @@
+{
+  "name": "@nikvzakharov/status-monitor",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "packageManager": "pnpm@12.15.0",
+  "scripts": {
+    "test": "node --test tests/monitor.test.mjs tests/profile.test.mjs tests/release.test.mjs",
+    "test:transport": "node tests/run-transport.mjs",
+    "check": "pnpm test && pnpm test:transport && bash -n install.sh run.sh",
+    "release:build": "node scripts/build-release.mjs"
+  }
+}
