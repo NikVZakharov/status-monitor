@@ -18,6 +18,15 @@ async function rejectLinks(path) {
     if (item.isDirectory()) await rejectLinks(join(path,item.name));
   }
 }
+export async function normalizeRuntimePermissions(path) {
+  await chmod(path,0o755);
+  for(const item of await readdir(path,{withFileTypes:true})) {
+    const target=join(path,item.name);
+    if(item.isDirectory()) await normalizeRuntimePermissions(target);
+    else if(item.isFile()) await chmod(target,item.name.endsWith('.sh')?0o755:0o644);
+    else throw new Error('Unsupported runtime entry');
+  }
+}
 export async function treeDigest(path) {
   const digest=createHash('sha256');
   async function visit(current, relative='') {
@@ -78,6 +87,7 @@ async function main() {
     if (await treeDigest(join(staging,'public'))!==bundleSha256) throw new Error('Status bundle changed while staging');
     await verifyRelease(staging);
     await writeFile(join(staging,'installation.json'),`${JSON.stringify({repository:release.repository,tag:release.tag,version:release.version,commit:release.commit,profileSha256:createHash('sha256').update(profileBytes).digest('hex'),bundleSha256,installedAt:new Date().toISOString()},null,2)}\n`,{mode:0o644});
+    await normalizeRuntimePermissions(staging);
     if(hadEnv) await cp(envPath,join(backup,'environment.env'));
     if(hadUnit) await cp(unitPath,join(backup,'service.unit'));
     const installedEnvironment=originalEnvironment.split('\n').filter(line=>!/^\s*(?:export\s+)?STATUS_PROFILE_PATH\s*=/.test(line)).join('\n').trimEnd()+`\nSTATUS_PROFILE_PATH=${live}/profile.mjs\n`;
