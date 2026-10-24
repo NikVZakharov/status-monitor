@@ -1,12 +1,12 @@
 {
-  "status": "IN_PROGRESS_CONSUMER_SOURCE_PUBLICATION",
+  "status": "PASS",
   "acceptance": {
     "AC1": "PASS",
     "AC2": "PASS",
     "AC3": "PASS",
     "AC4": "PASS",
     "AC5": "PASS",
-    "AC6": "PARTIAL"
+    "AC6": "PASS"
   },
   "release": {
     "repository": "NikVZakharov/status-monitor",
@@ -125,10 +125,44 @@
       "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
     },
     "myrobotica": {
-      "commit": "7c85dd9f004cf19a2843d92232f0be5ef83bd61c",
-      "state": "LOCAL_COMMIT_PUBLICATION_AWAITS_OWNER_WORKTREE_DECISION",
-      "verification": "Staged hook and three profile checks passed; ordinary push not attempted through a dirty shared checkout",
-      "blocker": "Consumer instructions forbid additional worktrees without explicit owner authorization and require a clean checkout before push. Preserve concurrent work and unrelated unpublished commits."
+      "commit": "13ceeac694921ad5c9ef76be1a21d30c88734b77",
+      "profileSourceCommit": "c87dbbfc7b3104754becb83c0cfde1c06df3ef2c",
+      "pullRequest": "https://github.com/NikVZakharov/myrobotica/pull/170",
+      "state": "OPEN_NOT_MERGED",
+      "verification": "Owner-authorized isolated checkout based on origin/main; normal staged/pre-push hooks passed, 3 profile tests passed on pinned Node 26.10.0; installed profile bytes match the published source",
+      "ownerAuthorizedIsolation": true,
+      "primaryCheckoutPreserved": true,
+      "documentationCompilation": "Standalone documentation build scripts/package are absent in this consumer; Markdown metadata/link validation passed; no compilation PASS claimed"
+    }
+  },
+  "finalPublicReadback": {
+    "casecore": {
+      "page": 200,
+      "feed": 200,
+      "observationState": "current",
+      "overall": "operational",
+      "observedAt": "2026-10-24T15:07:44.177Z"
+    },
+    "alvori": {
+      "page": 200,
+      "feed": 200,
+      "observationState": "current",
+      "overall": "operational",
+      "observedAt": "2026-10-24T15:07:57.293Z"
+    },
+    "damkora": {
+      "page": 200,
+      "feed": 200,
+      "observationState": "current",
+      "overall": "operational",
+      "observedAt": "2026-10-24T15:07:40.540Z"
+    },
+    "myrobotica": {
+      "page": 200,
+      "feed": 200,
+      "observationState": "current",
+      "overall": "operational",
+      "observedAt": "2026-10-24T15:07:39.190Z"
     }
   }
 }

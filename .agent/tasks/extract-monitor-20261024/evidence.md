@@ -12,10 +12,14 @@ The failed v0.1.0 first activation and successful automatic rollback remain reco
 
 ## Consumer source publication
 
-AC6 PARTIAL. CaseCore PR 442, Alvori PR 728 and Damkora PR 37 are open; no consumer main merge is claimed. Their normal hooks and required documentation builds passed. Alvori documentation was built from its exact committed source in a detached verification-only checkout, preserving concurrent primary-checkout edits.
+AC6 PASS. CaseCore PR 442, Alvori PR 728 and Damkora PR 37 are open; no consumer main merge is claimed. Their normal hooks and required documentation builds passed. Alvori documentation was built from its exact committed source in a detached verification-only checkout, preserving concurrent primary-checkout edits.
 
-MyRobotica owns its profile and pin in local commit 7c85dd9f. Its shared checkout contains unrelated unfinished edits and unpublished commits. Its instructions forbid additional worktrees without explicit owner authorization and require a clean tree before ordinary push. Owner authorization for a temporary isolated publication worktree was requested and remains pending. No dirty-checkout push, hook bypass or publication of unrelated work was attempted.
+The owner explicitly authorized temporary isolated worktrees. MyRobotica monitoring-only changes were transferred onto origin/main and published in PR 170, source commit `13ceeac694921ad5c9ef76be1a21d30c88734b77`. Normal staged and pre-push hooks passed; three profile checks passed on pinned Node 26.10.0. The installed profile matches the published bytes. Concurrent primary-checkout edits and unrelated unpublished commits were preserved. A prepare-created scheduler for the temporary checkout was removed immediately; the primary scheduler was preserved. Verification receipts are retained privately and the temporary checkout is cleaned up after publication.
+
+This consumer currently has no standalone documentation build scripts/package. Repository Markdown metadata/link validation passed, but documentation compilation is not claimed. All four consumer PRs are open; no ordinary consumer main merge is claimed.
 
 Raw operator commands, configuration fingerprints, archive validation, before/after state snapshots, build logs and HTTPS readbacks remain protected outside public Git. Exact consumer receipts and source URLs are in evidence.json.
 
 Final live readback at 12:59 UTC on 2026-10-24 confirmed all four pages/feed pairs still returned 200/current/operational. The installed profile hashes are bound to exact committed consumer sources (including the formatted Damkora adapter). Runtime Node versions are 26.11.1 for three instances and 24.18.0 for Alvori; the older system Node on the shared host was not used or changed. Consumer hosted checks remained queued/pending when this source-delivery receipt was recorded; local successful gates were preserved.
+
+After consumer source publication, a fresh independent HTTPS readback again returned page/feed 200 and current operational observations for all four domains. The final public receipt is recorded in evidence.json.
