@@ -42,11 +42,16 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          RELEASE_PRS: ${{ steps.release.outputs.prs || '[]' }}
         run: |
-          gh pr list --label 'autorelease: pending' --json headRefName --jq '.[].headRefName' |
-          while IFS= read -r branch; do
-            gh workflow run quality.yml --ref "$branch"
-          done
+          node --input-type=module <<'JS'
+          import { execFileSync } from 'node:child_process';
+          for (const pr of JSON.parse(process.env.RELEASE_PRS)) {
+            if (!Number.isSafeInteger(pr.number) || pr.number < 1) throw new Error('Invalid release PR number');
+            const branch = execFileSync('gh', ['api', `repos/${process.env.GH_REPO}/pulls/${pr.number}`, '--jq', '.head.ref'], {encoding: 'utf8'}).trim();
+            execFileSync('gh', ['workflow', 'run', 'quality.yml', '--ref', branch], {stdio: 'inherit'});
+          }
+          JS
       - name: Package the exact release commit
         if: steps.release.outputs.release_created == 'true'
         env:
