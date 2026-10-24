@@ -27,6 +27,8 @@ Installer проверяет происхождение и SHA-256 файлов 
 - `/var/lib/example-status-monitor/` — история с правами 0700;
 - `example-status-monitor.service` — отдельный systemd-процесс.
 
+Installer сохраняет выбранный при его запуске путь Node.js в службе; при отдельном runtime добавьте его `bin` в PATH перед apply. Системный Node.js и другие приложения не обновляются.
+
 Требуются Linux/systemd, поддерживаемая Node.js не ниже 22.16, Bash и util-linux `flock`. Listener принимает только `127.0.0.1`; существующий HTTPS proxy обслуживает домен. Установка не меняет DNS или HTTPS-маршруты.
 
 ## Настройки
