@@ -1,0 +1,22 @@
+{
+  "status": "IN_PROGRESS",
+  "checks": {
+    "core": {
+      "pass": 23,
+      "skip": 1,
+      "fail": 0,
+      "note": "Linux flock proof is deferred to hosted Linux Quality"
+    },
+    "tls": {
+      "pass": 9,
+      "fail": 0
+    },
+    "packaging": "PASS",
+    "public_source_boundary": "PASS"
+  },
+  "remaining": [
+    "Publish first Release Please version and assets",
+    "Install all four consumers and independently verify provenance, history and HTTPS",
+    "Consumer source delivery"
+  ]
+}
