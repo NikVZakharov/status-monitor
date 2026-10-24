@@ -108,21 +108,42 @@
       "pullRequest": "https://github.com/promtechAdmin/casecore/pull/442",
       "state": "OPEN_NOT_MERGED",
       "verification": "Normal staged/pre-push hooks and both documentation builds passed",
-      "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
+      "hostedChecks": "PASS"
     },
     "alvori": {
-      "commit": "85084e0fee3e9ba79293812e4605c411cc308ca2",
+      "commit": "d283de07772d83035e571be7c6a2f16bc0fd3401",
       "pullRequest": "https://github.com/promtechAdmin/alvori/pull/728",
       "state": "OPEN_NOT_MERGED",
       "verification": "Normal staged/pre-push hooks, profile contracts and all four documentation builds passed",
-      "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
+      "hostedChecks": "Original generated-map freshness failure corrected; new-head hosted check pending. Previous unrelated CI passes retained; failed check and both unfinished contract checks passed locally.",
+      "ciFix": {
+        "sourceCommit": "d283de07772d83035e571be7c6a2f16bc0fd3401",
+        "changes": "Two generated maps, nine added lines; no runtime/profile changes",
+        "failedCheck": {
+          "command": "pnpm repo-records:verify-generated",
+          "exitCode": 0
+        },
+        "previouslyUnfinished": [
+          {
+            "command": "pnpm contracts:coverage:check",
+            "exitCode": 0
+          },
+          {
+            "command": "pnpm docs:contracts:verify",
+            "exitCode": 0
+          }
+        ],
+        "stagedHook": "PASS",
+        "prePushHook": "PASS",
+        "installedProfileUnchanged": true
+      }
     },
     "damkora": {
       "commit": "f520251a810feed44c17024e10d39d65cb55b542",
       "pullRequest": "https://github.com/NikVZakharov/Damkora/pull/37",
       "state": "OPEN_NOT_MERGED",
       "verification": "Normal staged/pre-push hooks, status build, profile contracts and both documentation builds passed; 271 tests passed, one skipped",
-      "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
+      "hostedChecks": "PENDING self-hosted runner; normal local source hooks PASS"
     },
     "myrobotica": {
       "commit": "13ceeac694921ad5c9ef76be1a21d30c88734b77",
@@ -132,7 +153,8 @@
       "verification": "Owner-authorized isolated checkout based on origin/main; normal staged/pre-push hooks passed, 3 profile tests passed on pinned Node 26.10.0; installed profile bytes match the published source",
       "ownerAuthorizedIsolation": true,
       "primaryCheckoutPreserved": true,
-      "documentationCompilation": "Standalone documentation build scripts/package are absent in this consumer; Markdown metadata/link validation passed; no compilation PASS claimed"
+      "documentationCompilation": "Standalone documentation build scripts/package are absent in this consumer; Markdown metadata/link validation passed; no compilation PASS claimed",
+      "hostedChecks": "GitHub dispatch PASS; normal isolated staged/pre-push source hooks PASS"
     }
   },
   "finalPublicReadback": {
