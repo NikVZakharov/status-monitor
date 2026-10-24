@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/NikVZakharov/status-monitor/compare/v0.1.0...v0.1.1) (2026-10-24)
+
+
+### Bug Fixes
+
+* make staged runtime readable under a secure operator umask ([a2648e4](https://github.com/NikVZakharov/status-monitor/commit/a2648e42bc8ea6cbc4dfa9a4cea1ae82773cf178))
+
 ## 0.1.0 (2026-10-24)
 
 
