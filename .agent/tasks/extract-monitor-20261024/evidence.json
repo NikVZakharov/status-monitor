@@ -48,8 +48,10 @@
       "publicPage": 200,
       "publicFeed": 200,
       "title": "Состояние сервиса — CaseCore",
+      "runtimeNodeVersion": "v26.11.1",
+      "consumerCommit": "d379050dd8dc545d39cc07ff2ff28abc0888d725",
       "overall": "operational",
-      "observedAt": "2026-10-24T12:31:32.377Z"
+      "observedAt": "2026-10-24T12:58:53.202Z"
     },
     "myrobotica": {
       "tag": "v0.1.1",
@@ -62,8 +64,10 @@
       "publicPage": 200,
       "publicFeed": 200,
       "title": "Состояние сервиса — MyRobotica",
+      "runtimeNodeVersion": "v26.11.1",
+      "consumerCommit": "7c85dd9f004cf19a2843d92232f0be5ef83bd61c",
       "overall": "operational",
-      "observedAt": "2026-10-24T12:31:51.861Z"
+      "observedAt": "2026-10-24T12:59:08.439Z"
     },
     "damkora": {
       "tag": "v0.1.1",
@@ -76,8 +80,10 @@
       "publicPage": 200,
       "publicFeed": 200,
       "title": "Состояние сервисов — Дамкора",
+      "runtimeNodeVersion": "v26.11.1",
+      "consumerCommit": "f520251a810feed44c17024e10d39d65cb55b542",
       "overall": "operational",
-      "observedAt": "2026-10-24T12:31:52.688Z"
+      "observedAt": "2026-10-24T12:59:13.819Z"
     },
     "alvori": {
       "tag": "v0.1.1",
@@ -90,8 +96,10 @@
       "publicPage": 200,
       "publicFeed": 200,
       "title": "Состояние сервиса — Alvori",
+      "runtimeNodeVersion": "v24.18.0",
+      "consumerCommit": "85084e0fee3e9ba79293812e4605c411cc308ca2",
       "overall": "operational",
-      "observedAt": "2026-10-24T12:31:26.946Z"
+      "observedAt": "2026-10-24T12:58:55.349Z"
     }
   },
   "consumerSource": {
@@ -99,22 +107,25 @@
       "commit": "d379050dd8dc545d39cc07ff2ff28abc0888d725",
       "pullRequest": "https://github.com/promtechAdmin/casecore/pull/442",
       "state": "OPEN_NOT_MERGED",
-      "verification": "Normal staged/pre-push hooks and both documentation builds passed"
+      "verification": "Normal staged/pre-push hooks and both documentation builds passed",
+      "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
     },
     "alvori": {
-      "commit": "85084e0fe",
+      "commit": "85084e0fee3e9ba79293812e4605c411cc308ca2",
       "pullRequest": "https://github.com/promtechAdmin/alvori/pull/728",
       "state": "OPEN_NOT_MERGED",
-      "verification": "Normal staged/pre-push hooks, profile contracts and all four documentation builds passed"
+      "verification": "Normal staged/pre-push hooks, profile contracts and all four documentation builds passed",
+      "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
     },
     "damkora": {
-      "commit": "f520251",
+      "commit": "f520251a810feed44c17024e10d39d65cb55b542",
       "pullRequest": "https://github.com/NikVZakharov/Damkora/pull/37",
       "state": "OPEN_NOT_MERGED",
-      "verification": "Normal staged/pre-push hooks, status build, profile contracts and both documentation builds passed; 271 tests passed, one skipped"
+      "verification": "Normal staged/pre-push hooks, status build, profile contracts and both documentation builds passed; 271 tests passed, one skipped",
+      "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
     },
     "myrobotica": {
-      "commit": "7c85dd9f",
+      "commit": "7c85dd9f004cf19a2843d92232f0be5ef83bd61c",
       "state": "LOCAL_COMMIT_PUBLICATION_AWAITS_OWNER_WORKTREE_DECISION",
       "verification": "Staged hook and three profile checks passed; ordinary push not attempted through a dirty shared checkout",
       "blocker": "Consumer instructions forbid additional worktrees without explicit owner authorization and require a clean checkout before push. Preserve concurrent work and unrelated unpublished commits."
