@@ -1,5 +1,7 @@
 # Verdict
 
-Runtime/release acceptance: PASS (AC1–AC5).
+PASS: AC1–AC6 for the requested extraction, release publication and four runtime cutovers.
 
-Overall source delivery: PARTIAL (AC6). Three consumer PRs are open. MyRobotica source publication awaits an explicit owner worktree decision; its installed monitor is already verified on v0.1.1. Do not describe consumer main merges or the entire source-delivery task as complete.
+All four consumer profiles and exact component pins are published in open PRs; ordinary consumer PRs are not merged. The installed component is v0.1.1 from the public repository, with matching release/profile hashes, preserved protected settings/static bundles/history and fresh successful public HTTPS readback.
+
+Verification limitation: MyRobotica has no standalone documentation build scripts/package. Its supported metadata/link checks and normal source hooks passed; documentation compilation remains unclaimed. Hosted consumer checks may still be queued; local mandatory hooks were not bypassed.
