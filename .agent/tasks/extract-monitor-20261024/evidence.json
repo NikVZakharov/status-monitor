@@ -1,22 +1,134 @@
 {
-  "status": "IN_PROGRESS",
+  "status": "IN_PROGRESS_CONSUMER_SOURCE_PUBLICATION",
+  "acceptance": {
+    "AC1": "PASS",
+    "AC2": "PASS",
+    "AC3": "PASS",
+    "AC4": "PASS",
+    "AC5": "PASS",
+    "AC6": "PARTIAL"
+  },
+  "release": {
+    "repository": "NikVZakharov/status-monitor",
+    "tag": "v0.1.1",
+    "commit": "4f76924e785baf6ab16d5813b120701f679b77cf",
+    "sha256": "05555bedaeb722209ee4c0ac3fb18d0bf40f01665d6c647a51e5733f9a5a9998",
+    "workflowRun": 40093912140
+  },
   "checks": {
-    "core": {
-      "pass": 23,
-      "skip": 1,
-      "fail": 0,
-      "note": "Linux flock proof is deferred to hosted Linux Quality"
+    "coreLinux": {
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0
     },
     "tls": {
-      "pass": 9,
-      "fail": 0
+      "passed": 9,
+      "failed": 0
+    },
+    "consumerProfileContracts": {
+      "passed": 9,
+      "failed": 0
+    },
+    "legacyCompatibilityComparisons": {
+      "passed": 44,
+      "failed": 0
     },
     "packaging": "PASS",
-    "public_source_boundary": "PASS"
+    "publicSourceBoundary": "PASS"
   },
-  "remaining": [
-    "Publish first Release Please version and assets",
-    "Install all four consumers and independently verify provenance, history and HTTPS",
-    "Consumer source delivery"
-  ]
+  "runtime": {
+    "casecore": {
+      "tag": "v0.1.1",
+      "commit": "4f76924e785baf6ab16d5813b120701f679b77cf",
+      "sourceFilesMatch": true,
+      "profileMatchesConsumer": true,
+      "protectedSettingsPreserved": true,
+      "staticBundlePreserved": true,
+      "historicalIncidentIdentitiesPreserved": 50,
+      "publicPage": 200,
+      "publicFeed": 200,
+      "title": "Состояние сервиса — CaseCore",
+      "runtimeNodeVersion": "v26.11.1",
+      "consumerCommit": "d379050dd8dc545d39cc07ff2ff28abc0888d725",
+      "overall": "operational",
+      "observedAt": "2026-10-24T12:58:53.202Z"
+    },
+    "myrobotica": {
+      "tag": "v0.1.1",
+      "commit": "4f76924e785baf6ab16d5813b120701f679b77cf",
+      "sourceFilesMatch": true,
+      "profileMatchesConsumer": true,
+      "protectedSettingsPreserved": true,
+      "staticBundlePreserved": true,
+      "historicalIncidentIdentitiesPreserved": 50,
+      "publicPage": 200,
+      "publicFeed": 200,
+      "title": "Состояние сервиса — MyRobotica",
+      "runtimeNodeVersion": "v26.11.1",
+      "consumerCommit": "7c85dd9f004cf19a2843d92232f0be5ef83bd61c",
+      "overall": "operational",
+      "observedAt": "2026-10-24T12:59:08.439Z"
+    },
+    "damkora": {
+      "tag": "v0.1.1",
+      "commit": "4f76924e785baf6ab16d5813b120701f679b77cf",
+      "sourceFilesMatch": true,
+      "profileMatchesConsumer": true,
+      "protectedSettingsPreserved": true,
+      "staticBundlePreserved": true,
+      "historicalIncidentIdentitiesPreserved": 0,
+      "publicPage": 200,
+      "publicFeed": 200,
+      "title": "Состояние сервисов — Дамкора",
+      "runtimeNodeVersion": "v26.11.1",
+      "consumerCommit": "f520251a810feed44c17024e10d39d65cb55b542",
+      "overall": "operational",
+      "observedAt": "2026-10-24T12:59:13.819Z"
+    },
+    "alvori": {
+      "tag": "v0.1.1",
+      "commit": "4f76924e785baf6ab16d5813b120701f679b77cf",
+      "sourceFilesMatch": true,
+      "profileMatchesConsumer": true,
+      "protectedSettingsPreserved": true,
+      "staticBundlePreserved": true,
+      "historicalIncidentIdentitiesPreserved": 34,
+      "publicPage": 200,
+      "publicFeed": 200,
+      "title": "Состояние сервиса — Alvori",
+      "runtimeNodeVersion": "v24.18.0",
+      "consumerCommit": "85084e0fee3e9ba79293812e4605c411cc308ca2",
+      "overall": "operational",
+      "observedAt": "2026-10-24T12:58:55.349Z"
+    }
+  },
+  "consumerSource": {
+    "casecore": {
+      "commit": "d379050dd8dc545d39cc07ff2ff28abc0888d725",
+      "pullRequest": "https://github.com/promtechAdmin/casecore/pull/442",
+      "state": "OPEN_NOT_MERGED",
+      "verification": "Normal staged/pre-push hooks and both documentation builds passed",
+      "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
+    },
+    "alvori": {
+      "commit": "85084e0fee3e9ba79293812e4605c411cc308ca2",
+      "pullRequest": "https://github.com/promtechAdmin/alvori/pull/728",
+      "state": "OPEN_NOT_MERGED",
+      "verification": "Normal staged/pre-push hooks, profile contracts and all four documentation builds passed",
+      "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
+    },
+    "damkora": {
+      "commit": "f520251a810feed44c17024e10d39d65cb55b542",
+      "pullRequest": "https://github.com/NikVZakharov/Damkora/pull/37",
+      "state": "OPEN_NOT_MERGED",
+      "verification": "Normal staged/pre-push hooks, status build, profile contracts and both documentation builds passed; 271 tests passed, one skipped",
+      "hostedChecks": "PENDING; local mandatory hooks and required docs builds passed"
+    },
+    "myrobotica": {
+      "commit": "7c85dd9f004cf19a2843d92232f0be5ef83bd61c",
+      "state": "LOCAL_COMMIT_PUBLICATION_AWAITS_OWNER_WORKTREE_DECISION",
+      "verification": "Staged hook and three profile checks passed; ordinary push not attempted through a dirty shared checkout",
+      "blocker": "Consumer instructions forbid additional worktrees without explicit owner authorization and require a clean checkout before push. Preserve concurrent work and unrelated unpublished commits."
+    }
+  }
 }
